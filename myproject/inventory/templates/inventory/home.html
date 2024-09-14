@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Мої таблиці</title>
+</head>
+<body>
+    <h1>Відділ поставок</h1>
+    <p><em>Толстих Максим Юрійович, 22010бск</em></p>
+
+    <h2>Таблиця постачальників</h2>
+    <table border="1">
+        <tr>
+            <th>Код</th>
+            <th>Назва компанії</th>
+            <th>Контактна особа</th>
+            <th>Телефон</th>
+            <th>Рахунок</th>
+        </tr>
+        {% for supplier in suppliers %}
+        <tr>
+            <td>{{ supplier.id }}</td>
+            <td>{{ supplier.company_name }}</td>
+            <td>{{ supplier.contact_person }}</td>
+            <td>{{ supplier.phone }}</td>
+            <td>{{ supplier.bank_account }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Таблиця матеріалів</h2>
+    <table border="1">
+        <tr>
+            <th>Код</th>
+            <th>Назва матеріалу</th>
+            <th>Ціна</th>
+        </tr>
+        {% for material in materials %}
+        <tr>
+            <td>{{ material.id }}</td>
+            <td>{{ material.material_name }}</td>
+            <td>{{ material.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Таблиця поставок</h2>
+    <table border="1">
+        <tr>
+            <th>Код</th>
+            <th>Дата</th>
+            <th>Постачальник</th>
+            <th>Матеріал</th>
+            <th>Кількість днів</th>
+            <th>Кількість</th>
+        </tr>
+        {% for delivery in deliveries %}
+        <tr>
+            <td>{{ delivery.id }}</td>
+            <td>{{ delivery.delivery_date }}</td>
+            <td>{{ delivery.supplier.company_name }}</td>
+            <td>{{ delivery.material.material_name }}</td>
+            <td>{{ delivery.delivery_days }}</td>
+            <td>{{ delivery.quantity }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
